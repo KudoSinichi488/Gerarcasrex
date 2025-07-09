@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0a1624;
+  color: #fff;
+}
+
+.slider-section {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.slider-section h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.slider-section .desc {
+  font-size: 0.95em;
+  color: #ccc;
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.slider {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slides {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.slide {
+  position: relative;
+  min-width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  transition: all 0.3s ease-in-out;
+  filter: brightness(1.05) contrast(1.2) saturate(1.3);
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 20px 20px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.caption h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #00ffff;
+}
+
+.caption p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #ccc;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
