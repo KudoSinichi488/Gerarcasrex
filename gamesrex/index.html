@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ICT Quiz & Trivia | SunHIGH</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 20px;
+    }
+
+    header .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0 0 0;
+      font-size: 14px;
+    }
+
+    .home-btn {
+      background-color: white;
+      color: #0077b6;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #0077b6;
+      transition: 0.3s;
+    }
+
+    .home-btn:hover {
+      background-color: #0077b6;
+      color: white;
+    }
+
+    main {
+      padding: 30px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .quiz, .trivia, .history {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .options button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px 16px;
+      width: 100%;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+
+    .options button:hover {
+      background-color: #e0f0ff;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .trivia-text {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #00b4d8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #0077b6;
+    }
+
+    .history h2 {
+      margin-bottom: 15px;
+    }
+
+    .history ul {
+      padding-left: 20px;
+    }
+
+    .history li {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER with HOME BUTTON -->
+  <header>
+    <div class="header-container">
+      <div>
+        <h1>🧠 ICT Quiz & Trivia</h1>
+        <p>Test your knowledge & learn fun facts about computers</p>
+      </div>
+      <div>
+        <a href="index.html" class="home-btn"> Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Quiz Section -->
+    <section class="quiz">
+      <h2>🎯 Quick Quiz</h2>
+      <div class="question" id="question">Loading question...</div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+    </section>
+
+    <!-- Trivia Section -->
+    <section class="trivia">
+      <h2>💡 Did You Know?</h2>
+      <p class="trivia-text" id="trivia-text">Click below to reveal trivia!</p>
+      <button class="btn" onclick="showTrivia()">Show Another Trivia</button>
+    </section>
+
+    <!-- ICT History Section -->
+    <section class="history">
+      <h2>🌍 ICT History & Pioneers</h2>
+      <ul>
+        <li><strong>Charles Babbage</strong> – Known as the "Father of the Computer" for designing the first mechanical computer, the Analytical Engine.</li>
+        <li><strong>Ada Lovelace</strong> – Recognized as the first computer programmer. She worked with Babbage and wrote the first algorithm intended for a machine.</li>
+        <li><strong>Alan Turing</strong> – Mathematician and cryptanalyst who developed the concept of a modern computer and helped break the Enigma code during WWII.</li>
+        <li><strong>John von Neumann</strong> – Created the architecture (von Neumann architecture) used in most computers today.</li>
+        <li><strong>Tim Berners-Lee</strong> – Inventor of the World Wide Web in 1989, which allowed users to access linked information on the internet.</li>
+        <li><strong>Vint Cerf & Bob Kahn</strong> – Known as the "Fathers of the Internet" for creating the TCP/IP protocols that form the foundation of internet communication.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    const quizData = [
+      {
+        question: "What does CPU stand for?",
+        options: ["Central Processing Unit", "Computer Power Unit", "Core Programming Unit", "Central Programming Utility"],
+        answer: "Central Processing Unit"
+      },
+      {
+        question: "Which of the following is an output device?",
+        options: ["Mouse", "Keyboard", "Monitor", "Scanner"],
+        answer: "Monitor"
+      },
+      {
+        question: "What is the brain of the computer?",
+        options: ["RAM", "Hard Drive", "CPU", "GPU"],
+        answer: "CPU"
+      },
+      {
+        question: "Which storage device is fastest?",
+        options: ["Hard Disk Drive", "DVD", "SSD", "Floppy Disk"],
+        answer: "SSD"
+      }
+    ];
+
+    const triviaFacts = [
+      "The first computer virus was called the Creeper (1971).",
+      "The first 1GB hard drive weighed over 500 pounds.",
+      "There are more possible iterations of a game of chess than atoms in the universe.",
+      "TYPEWRITER is the longest word you can type using only the top row of a keyboard.",
+      "The first computer mouse was made of wood.",
+      "Email existed before the World Wide Web.",
+      "The password for the first ever computer system was '123'."
+    ];
+
+    let currentQuestionIndex = 0;
+
+    function loadQuestion() {
+      const q = quizData[currentQuestionIndex];
+      document.getElementById("question").innerText = q.question;
+
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.innerText = option;
+        btn.onclick = () => checkAnswer(option, q.answer);
+        optionsContainer.appendChild(btn);
+      });
+
+      document.getElementById("feedback").innerText = "";
+    }
+
+    function checkAnswer(selected, correct) {
+      const feedback = document.getElementById("feedback");
+      if (selected === correct) {
+        feedback.innerText = "✅ Correct!";
+        feedback.style.color = "green";
+      } else {
+        feedback.innerText = `❌ Incorrect. The correct answer is "${correct}".`;
+        feedback.style.color = "red";
+      }
+
+      // Load next question after short delay
+      setTimeout(() => {
+        currentQuestionIndex = (currentQuestionIndex + 1) % quizData.length;
+        loadQuestion();
+      }, 2000);
+    }
+
+    function showTrivia() {
+      const randomIndex = Math.floor(Math.random() * triviaFacts.length);
+      document.getElementById("trivia-text").innerText = triviaFacts[randomIndex];
+    }
+
+    // Load first question on page load
+    loadQuestion();
+  </script>
+
+</body>
+</html>
