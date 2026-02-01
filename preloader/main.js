@@ -27,7 +27,7 @@ window.addEventListener("load", () => {
 
         setTimeout(() => {
           window.location.href =
-            "https://kudosinichi488.lovestoblog.com/index.php";
+            "https://e-tutolearning.mydiscussion.net/index.php";
         }, fadeDuration);
       }, welcomeHold);
     }, preloaderFade);
